@@ -1,2 +1,1 @@
-# Tackling TypeScript
 # Tackling TypeScript!
