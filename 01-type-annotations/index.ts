@@ -1,0 +1,2 @@
+const nameVar: string = 'andrew';
+
