@@ -2,9 +2,10 @@
 function pointToString(pt) {
     return `(${pt.x}, ${pt.y})`;
 }
-const objWithMethod = {
+popwoeeiqoqpqpwopqoconst objWithMethod = {
     simpleMethod: function (flag) { },
 };
 const objWithArrowFunction = {
+    // no issue 
     simpleMethod: (flag) => { },
 };
