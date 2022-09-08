@@ -63,4 +63,9 @@ class `SimpleStack` has a type parameter `Elem`.  When we instantiate the class,
 
 ```ts
 const stringStack = new SimpleStack<string>();
+stringStack.push('first');
+stringStack.push('second');
+console.log(stringStack.length) // 2
+console.log(stringStack.pop()) // 'second' 
 ```
+
