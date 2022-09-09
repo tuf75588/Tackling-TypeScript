@@ -127,3 +127,15 @@ The type variable `T` appears four times in this code:
 - It is used for the first time in the type annotation for the parameter `elem`.
 - It is used for the second time to specify the return type of `fillArray()`.
 - It is also used as a type argument for the constructor `Array()`.
+
+
+We can omit the type parameter when calling `fillArray()` because TypeScript can infer `T` from the parameter `elem`:
+
+```ts
+// %inferred-type string[]
+const arr1 = fillArray<string>(3, '*');
+
+// %inferred-type string[]
+const arr2 = fillArray(3, '*');
+
+```
