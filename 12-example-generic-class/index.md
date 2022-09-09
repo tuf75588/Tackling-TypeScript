@@ -92,13 +92,12 @@ const num2 = identity(123);
 
 Note that TypeScript inferred the type `123`, **which is a set with one number and more specific than the type `number`**
 
-
 ---
 
 Arrow functions can also have type parameters:
 
 ```ts
-const identity = <Arg>(arg: Arg): Arg => arg; 
+const identity = <Arg>(arg: Arg): Arg => arg;
 ```
 
 This is the type parameter syntax for methods:
@@ -107,13 +106,13 @@ This is the type parameter syntax for methods:
 const obj = {
   identity<Arg>(arg: Arg): Arg {
     return arg;
-  }
-}
+  },
+};
 ```
 
 ---
 
-## A more complicated function example 
+## A more complicated function example
 
 ```ts
 function fillArray<T>(len: number, elem: T): T[] {
@@ -123,11 +122,10 @@ function fillArray<T>(len: number, elem: T): T[] {
 
 The type variable `T` appears four times in this code:
 
-- It is introduced via `fillArray<T>`.  Therefore, its scope is the function.
+- It is introduced via `fillArray<T>`. Therefore, its scope is the function.
 - It is used for the first time in the type annotation for the parameter `elem`.
 - It is used for the second time to specify the return type of `fillArray()`.
 - It is also used as a type argument for the constructor `Array()`.
-
 
 We can omit the type parameter when calling `fillArray()` because TypeScript can infer `T` from the parameter `elem`:
 
@@ -137,5 +135,18 @@ const arr1 = fillArray<string>(3, '*');
 
 // %inferred-type string[]
 const arr2 = fillArray(3, '*');
+```
 
+---
+
+## Understanding initial example
+
+```ts
+interface Array<T> {
+  concat(...items: Array<T[] | T>): T[];
+  reduce<U>(
+    callback: (state: U, element: T, index: number, array: T[]) => U,
+    firstState?: U
+  ): U;
+}
 ```
