@@ -105,7 +105,7 @@ Interfaces can also contain methods:
 ```typescript
 interface Point = {
   x: number;
-  y: number;
+  y: number; 
   distance(other: Point) => number;
 }
 ```

@@ -25,8 +25,8 @@ class `SimpleStack` has a type parameter `Elem`. When we instantiate the class, 
 
 ```ts
 const stringStack = new SimpleStack<string>();
-stringStack.push('first');
-stringStack.push('second');
+stringStack.push("first");
+stringStack.push("second");
 console.log(stringStack.length); // 2
 console.log(stringStack.pop()); // 'second'
 ```
@@ -35,10 +35,10 @@ Class `SimpleStack` has the type parameter `Elem`. When we instantiate the class
 
 ```ts
 const stringStack = new SimpleStack<string>();
-stringStack.push('first');
-stringStack.push('second');
+stringStack.push("first");
+stringStack.push("second");
 assert.equal(stringStack.length, 2);
-assert.equal(stringStack.pop(), 'second');
+assert.equal(stringStack.pop(), "second");
 ```
 
 ---
@@ -49,8 +49,8 @@ Maps are typed generically in TypeScript. For example:
 
 ```ts
 const myMap: Map<boolean, string> = new Map([
-  [false, 'no'],
-  [true, 'yes'],
+  [false, "no"],
+  [true, "yes"],
 ]);
 ```
 
@@ -59,8 +59,8 @@ Due to type inference, we can once again omit the type parameter:
 ```ts
 // %inferred-type: Map<boolean, string>
 const myMap = new Map([
-  [true, 'yes'],
-  [false, 'no'],
+  [true, "yes"],
+  [false, "no"],
 ]);
 ```
 
@@ -131,10 +131,10 @@ We can omit the type parameter when calling `fillArray()` because TypeScript can
 
 ```ts
 // %inferred-type string[]
-const arr1 = fillArray<string>(3, '*');
+const arr1 = fillArray<string>(3, "*");
 
 // %inferred-type string[]
-const arr2 = fillArray(3, '*');
+const arr2 = fillArray(3, "*");
 ```
 
 ---
@@ -150,3 +150,21 @@ interface Array<T> {
   ): U;
 }
 ```
+
+This is an interface for Arrays whose elements are of type `T`
+
+<!-- (...items: Array<T[] | T>): T[] -->
+
+- method `.concat()` has zero or more parameters (defined via a rest parameter). Each of those parameters has the type `T[]|T`. That is, it is either an Array of `T` values or a single `T` value.
+
+- method `.reduce()` introduces its own type variable `U`. `U` is used to express the fact that the following entities all have the same type:
+  - Parameter `state` of `callback()`
+  - Result of `callback()`
+  - Optional parameter `firstState` of `.reduce()`
+  - Result of `.reduce()`
+
+In addition to `state` `callback()` has the following parameters:
+
+- `element`, which has the same type `T` as the Array elements
+- `index`, a number
+- `array` with elements of type `T`
