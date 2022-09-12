@@ -20,33 +20,47 @@ let myVariable: MyType;
 type UnionType = Type1 | Type2 | Type3;
 ```
 
---- 
+---
 
 ## Perspective 1: types are a set of values
 
 From this perspective, a type is a set of values:
 
-1. if `myVariable` has the type `MyType`, then all values that can be assigned to `myVariable` must be elements of the set `MyType`. 
+1. if `myVariable` has the type `MyType`, then all values that can be assigned to `myVariable` must be elements of the set `MyType`.
 
 2. The union type of the types `Type1`, `Type2`, and `Type3` is the set-theorhetic union of the sets that define them.
 
 ---
 
-## Perspective 2: type compatibility relationships 
+## Perspective 2: type compatibility relationships
 
-From this perspective, we are not concerned with values and how they flow when code is executed. Instead, we take a more static view. 
+From this perspective, we are not concerned with values and how they flow when code is executed. Instead, we take a more static view.
 
-- The source code has locations and each location has a static type.  In a TypeScript aware editor, we can see the static type of a location if we hover above it with the cursor. 
+- The source code has locations and each location has a static type. In a TypeScript aware editor, we can see the static type of a location if we hover above it with the cursor.
 
 ---
 
-## Nominal type systems vs. structural type systems 
+## Nominal type systems vs. structural type systems
 
 One of the responsibilities of a static type system is to determine if two static types are compatible:
-  - The static type `Src` of an actual parameter (e.g., provided via function call)
-  - The static type `Trg` of the corresponding formal parameter (e.g., specified as part of a function definition)
-  
-This often means checking if `Src` is a subtype of `Trg`.  Two approaches for this check are (roughly):
-  - In a *nominal* or *nominitive* type system, two static types are equal if they have the same identity ("name"). One type is a subtype is a subtype of another if their subtype relationship was defined explicitly.
-  
-  - In a *structural* type system, two static types are equal if they have the same structure (if their parts have the same names and the same types).  On type `Sub` is a subtype of another type `Sup` if `Sub` has all the parts of `Sup` (and possibly others) and each part of `Sub` has a subtype of the corresponding part of `Sup`.
+
+- The static type `Src` of an actual parameter (e.g., provided via function call)
+- The static type `Trg` of the corresponding formal parameter (e.g., specified as part of a function definition)
+
+This often means checking if `Src` is a subtype of `Trg`. Two approaches for this check are (roughly):
+
+- In a _nominal_ or _nominitive_ type system, two static types are equal if they have the same identity ("name"). One type is a subtype is a subtype of another if their subtype relationship was defined explicitly.
+
+- In a _structural_ type system, two static types are equal if they have the same structure (if their parts have the same names and the same types). On type `Sub` is a subtype of another type `Sup` if `Sub` has all the parts of `Sup` (and possibly others) and each part of `Sub` has a subtype of the corresponding part of `Sup`.
+
+```ts
+class A {
+  name = 'test';
+}
+
+class B {
+  name = 'hello';
+}
+
+const c: A = new B();
+```
