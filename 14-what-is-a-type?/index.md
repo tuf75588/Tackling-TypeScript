@@ -47,4 +47,6 @@ One of the responsibilities of a static type system is to determine if two stati
   - The static type `Trg` of the corresponding formal parameter (e.g., specified as part of a function definition)
   
 This often means checking if `Src` is a subtype of `Trg`.  Two approaches for this check are (roughly):
-  - In a *nominal* or *nominitive* type system, two static types are equal if they have the same identity ("name"). One type is a subtype is a subtype of another if their subtype relationship was defined explicitly. 
+  - In a *nominal* or *nominitive* type system, two static types are equal if they have the same identity ("name"). One type is a subtype is a subtype of another if their subtype relationship was defined explicitly.
+  
+  - In a *structural* type system, two static types are equal if they have the same structure (if their parts have the same names and the same types).  On type `Sub` is a subtype of another type `Sup` if `Sub` has all the parts of `Sup` (and possibly others) and each part of `Sub` has a subtype of the corresponding part of `Sup`.
