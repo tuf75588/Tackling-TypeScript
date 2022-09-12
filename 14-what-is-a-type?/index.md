@@ -37,3 +37,14 @@ From this perspective, a type is a set of values:
 From this perspective, we are not concerned with values and how they flow when code is executed. Instead, we take a more static view. 
 
 - The source code has locations and each location has a static type.  In a TypeScript aware editor, we can see the static type of a location if we hover above it with the cursor. 
+
+---
+
+## Nominal type systems vs. structural type systems 
+
+One of the responsibilities of a static type system is to determine if two static types are compatible:
+  - The static type `Src` of an actual parameter (e.g., provided via function call)
+  - The static type `Trg` of the corresponding formal parameter (e.g., specified as part of a function definition)
+  
+This often means checking if `Src` is a subtype of `Trg`.  Two approaches for this check are (roughly):
+  - In a *nominal* or *nominitive* type system, two static types are equal if they have the same identity ("name"). One type is a subtype is a subtype of another if their subtype relationship was defined explicitly. 
