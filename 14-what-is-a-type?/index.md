@@ -64,3 +64,17 @@ class B {
 
 const c: A = new B();
 ```
+
+TypeScript's interfaces also work structurally -- they don't have to be implemented in order to match:
+
+```ts
+interface Point {
+  x: number;
+  y: number;
+}
+
+const point: Point = {x:1, y: 2} // OK
+
+```
+
+
