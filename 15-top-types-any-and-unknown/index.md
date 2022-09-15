@@ -147,7 +147,7 @@ Before we can perform any operation on values of type `unknown`, we must first n
   }
   ```
 
-<!-- AN ASSERTION FUNCTION -->
+AN ASSERTION FUNCTION:
 
 ```ts
 function assertIsRegExp(arg: unknown): asserts arg is RegExp {
