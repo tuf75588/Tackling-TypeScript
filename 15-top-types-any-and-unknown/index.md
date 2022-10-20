@@ -156,4 +156,3 @@ function assertIsRegExp(arg: unknown): asserts arg is RegExp {
   }
 }
 ```
-
