@@ -7,7 +7,7 @@
 This is a numeric enum:
 
 ```ts
-enum NoYes = {
+enum NoYes  {
   No = 0,
   Yes = 1,
 }
@@ -32,3 +32,31 @@ We can use members as if they were literals such as `true`, `123`, and `abc` for
     }
   }
 ```
+
+## String based enums
+
+Instead of numbers, we can also use strings as enum member values:
+
+```ts
+enum NoYes {
+  No = 'No',
+  Yes = 'Yes',
+}
+```
+
+## Heterogenous enums
+
+The last kind of enums is called *heterogenous*. The member values of a heterogenous enum are a mix of numbers and strings:
+
+```ts
+enum Enum {
+  One = 'One',
+  Two = 'Two',
+  Three = 3,
+  Four = 4,
+}
+```
+
+Heterogenous enums are not used often because they have few applications.
+
+Alas, TypeScript only supports numbers and strings as enum member values. Other values, such as symbols, are not allowed.
