@@ -61,7 +61,6 @@ Heterogenous enums are not used often because they have few applications.
 
 Alas, TypeScript only supports numbers and strings as enum member values. Other values, such as symbols, are not allowed.
 
-
 ## Omitting initializers
 
 We can omit initializers in two cases:
