@@ -60,3 +60,22 @@ enum Enum {
 Heterogenous enums are not used often because they have few applications.
 
 Alas, TypeScript only supports numbers and strings as enum member values. Other values, such as symbols, are not allowed.
+
+
+## Omitting initializers
+
+We can omit initializers in two cases:
+
+- We can omit the initializer of the first member.  Then that member has a value 0 (zero)
+- We can omit the initializer of a member if the previous member has a number value. Then the current member has that value plus one.
+
+This is a number enum without any initializer:
+
+```ts
+enum NoYes {
+  No, 
+  Yes,
+}
+assert.equal(NoYes.No, 0);
+assert.equal(NoYes.Yes, 1);
+```

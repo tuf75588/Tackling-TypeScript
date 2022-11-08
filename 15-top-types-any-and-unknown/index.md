@@ -78,7 +78,7 @@ interface StringConstructor {
 
 ## The top type `unknown`
 
-The type `unknown` is a type-safe version of the type `any`. Whenever you are thinking of using `any`, try using `unknown` first.
+The type `unknown` is a type-safe version of the type `any`. Whenever you are thinking of using `any`, try using `unknown` first. Type `unknown` **must** be narrowed down by any of the following:
 
 Where `any` allows us to do anything, `unknown` is much more restrictive.
 
