@@ -121,3 +121,56 @@ enum HttpRequestField {
 
 console.log((HttpRequestField['Accept-Charset']) // 1
 ```
+
+---
+
+# Specifying enum member values
+
+TypeScript distinguishes three kinds of enum members, by how they are **initialized**: 
+
+- A *literal enum member*
+  - either has no initializer
+  - or it is initialized via a number of string literal.
+
+- A *constant enum member* is initialized via an expression whose result can be computed at compile time.
+
+- A *computed enum member* is initialized via an arbitrary expression.
+
+So far, we have only used literal members.
+
+In the previous list, members that are mentioned earlier are less flexible but support more features. 
+
+## Literal enum members
+
+An enum member is *literal* if its value is specified:
+  - either implicitly
+  - or via a number literal (incl. negated number literals)
+  - or via a string literal.
+
+If an enum has only literal members, we can use those members as types (similar to how, e.g., number literals can be used as types):
+
+```ts
+enum NoYes {
+  No = 'No',
+  Yes = 'Yes'
+}
+
+function func(x: NoYes.No) {
+  return x;
+}
+
+console.log(func(NoYes.No)) // OK
+
+// @ts-expect-error: Argument of type '"No"' is not assignable to
+// parameter of type 'NoYes.No'.
+console.log(func('NO'))
+
+// @ts-expect-error: Argument of type 'NoYes.Yes' is not assignable to
+// parameter of type 'NoYes.No'.
+func(NoYes.Yes);
+```
+
+`NoYes.No` in the function `func` argument parens is an *enum member type*.
+
+Additionally, literal enums support exhaustiveness checks. 
+
